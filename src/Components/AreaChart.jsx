@@ -8,6 +8,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import Loader from "./Loader";
+
 import CustomToolTip from "./CustomToolTip";
 import { useSelector } from "react-redux";
 import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
@@ -26,7 +28,7 @@ const AreaChartComp = () => {
         <Flex
           css={{
             marginTop: 25,
-            height: 320,
+            height: 280,
             width: "100%",
             border: "$borderWidths$xs solid $border",
             borderRadius: "$lg",
@@ -40,7 +42,7 @@ const AreaChartComp = () => {
               color: "$textPrimary",
             }}
           >
-            Loading...
+            <Loader />
           </Heading>
         </Flex>
       ) : filteredData.length ? (

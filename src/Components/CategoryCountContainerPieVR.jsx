@@ -5,7 +5,7 @@ import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 import { COLORS } from "../utils/data";
 import { Flex, Text } from "@sparrowengg/twigs-react";
 
-const PieChartComp = ({ arr }) => {
+const CategoryCountContainerPieVR = ({ arr }) => {
   const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
 
   let firstArr = arr?.map((arr2) => ({
@@ -55,4 +55,4 @@ const PieChartComp = ({ arr }) => {
     );
 };
 
-export default PieChartComp;
+export default CategoryCountContainerPieVR;

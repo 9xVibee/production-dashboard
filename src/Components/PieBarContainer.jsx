@@ -1,7 +1,9 @@
 import { Flex, Heading, Text } from "@sparrowengg/twigs-react";
-import AlertIcon from "./../asset/alert-circle.svg";
-import AlertIcon2 from "./../asset/alert-circle2.svg";
-import PieChartComp from "./PieChartComp";
+
+import AlertIconLight from "./../asset/alert-circle.svg";
+import AlertIconDark from "./../asset/alert-circle2.svg";
+
+import CategoryCountContainerPieVR from "./CategoryCountContainerPieVR";
 import PieChartInfo from "./PieChartInfo";
 import CustomProgressBar from "./CustomProgressBar";
 import ProgressBarInfo from "./ProgressBarInfo";
@@ -15,7 +17,7 @@ const PieBarContainer = () => {
   const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
 
   const { pieData } = TopCateogry();
-  const { soldUnsoldData } = SoldUnsold();
+  const { NumberOfSoldAndUnsoldItems } = SoldUnsold();
 
   return (
     <Flex
@@ -41,7 +43,7 @@ const PieBarContainer = () => {
             Perpetual
           </Text>
           <img
-            src={mode === LIGHT_MODE ? AlertIcon : AlertIcon2}
+            src={mode === LIGHT_MODE ? AlertIconLight : AlertIcon2}
             alt="Alert Icon"
           />
         </Flex>
@@ -54,7 +56,7 @@ const PieBarContainer = () => {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <PieChartComp arr={pieData?.arr} />
+          <CategoryCountContainerPieVR arr={pieData?.arr} />
           <Flex flexDirection="column" gap="28px">
             {pieData?.arr.map((info, idx) => {
               return (
@@ -83,7 +85,10 @@ const PieBarContainer = () => {
           >
             Active Percentage
           </Text>
-          <img src={mode === LIGHT_MODE ? AlertIcon : AlertIcon2} alt="Alert" />
+          <img
+            src={mode === LIGHT_MODE ? AlertIconLight : AlertIconDark}
+            alt="Alert"
+          />
         </Flex>
 
         <Flex flexDirection="column">
@@ -95,7 +100,7 @@ const PieBarContainer = () => {
                 lineHeight: "46px",
               }}
             >
-              {soldUnsoldData?.total}
+              {NumberOfSoldAndUnsoldItems?.total}
             </Heading>
             <Text
               weight={"medium"}
@@ -110,7 +115,10 @@ const PieBarContainer = () => {
           </Flex>
 
           <CustomProgressBar
-            soldPercentage={(soldUnsoldData.sold * 100) / soldUnsoldData.total}
+            soldPercentage={
+              (NumberOfSoldAndUnsoldItems.sold * 100) /
+              NumberOfSoldAndUnsoldItems.total
+            }
           />
 
           <Flex
@@ -123,13 +131,13 @@ const PieBarContainer = () => {
           >
             <ProgressBarInfo
               title={"Sold"}
-              subTitle={soldUnsoldData.sold}
+              subTitle={NumberOfSoldAndUnsoldItems.sold}
               bgColor={"$mediumPurple"}
             />
 
             <ProgressBarInfo
               title={"Unsold"}
-              subTitle={soldUnsoldData.unsold}
+              subTitle={NumberOfSoldAndUnsoldItems.unsold}
               bgColor={"$lightPurple"}
             />
           </Flex>

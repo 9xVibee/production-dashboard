@@ -226,7 +226,7 @@ const Dashboard = () => {
                   fontWeight: "400",
                   border: "$borderWidths$xs solid $border",
                   padding: "$5 !important",
-                  lineHeight: "22px",
+                  lineHeight: "$xs",
                   "& svg": {
                     height: "$4 !important",
                     width: "$4 !important",

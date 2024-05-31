@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import { COUNT_ABOVE, COUNT_BELOW } from "../utils/data";
 
 const FilterData = () => {
-  const { count, endDate } = useSelector((store) => store.fakeapidata);
+  const { isCountAboveOrBelow, endDate } = useSelector(
+    (store) => store.fakeapidata
+  );
   const data = useSelector((store) => store.fakeapidata.data);
   const startDate = useSelector((store) => store.fakeapidata.startDate);
 
@@ -13,11 +15,11 @@ const FilterData = () => {
   const filterData = () => {
     let newFilteredData = data;
 
-    if (count) {
+    if (isCountAboveOrBelow) {
       newFilteredData = data?.filter((item) => {
         if (
-          (count === COUNT_BELOW && item?.rating?.count <= 100) ||
-          (count === COUNT_ABOVE && item?.rating?.count > 100)
+          (isCountAboveOrBelow === COUNT_BELOW && item?.rating?.count <= 100) ||
+          (isCountAboveOrBelow === COUNT_ABOVE && item?.rating?.count > 100)
         )
           return item;
       });
@@ -38,7 +40,7 @@ const FilterData = () => {
 
   useEffect(() => {
     filterData();
-  }, [startDate, count, data, endDate]);
+  }, [startDate, isCountAboveOrBelow, data, endDate]);
 
   return { filteredData };
 };

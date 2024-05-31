@@ -4,7 +4,7 @@ import FilterData from "./FilterData";
 const SoldUnsold = () => {
   const { filteredData } = FilterData();
 
-  const [soldUnsoldData, setSoldUnsoldData] = useState({
+  const [NumberOfSoldAndUnsoldItems, SetNumberOfSoldAndUnsoldItems] = useState({
     sold: 0,
     unsold: 0,
     total: filteredData?.length,
@@ -19,7 +19,7 @@ const SoldUnsold = () => {
       else unsold++;
     });
 
-    setSoldUnsoldData(() => ({
+    SetNumberOfSoldAndUnsoldItems(() => ({
       total: filteredData?.length,
       sold: sold,
       unsold: unsold,
@@ -30,7 +30,7 @@ const SoldUnsold = () => {
     countSoldUnsoldQuantity();
   }, [filteredData]);
 
-  return { soldUnsoldData };
+  return { NumberOfSoldAndUnsoldItems };
 };
 
 export default SoldUnsold;

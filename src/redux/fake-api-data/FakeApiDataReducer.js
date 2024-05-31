@@ -9,7 +9,7 @@ import {
 const initialState = {
   data: [],
   loading: true,
-  count: null,
+  isCountAboveOrBelow: null,
   startDate: null,
   endDate: null,
 };
@@ -40,7 +40,7 @@ const FakeApiReducer = (state = initialState, action) => {
     case SET_COUNT: {
       return {
         ...state,
-        count: action.count,
+        isCountAboveOrBelow: action.count,
       };
     }
 

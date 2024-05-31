@@ -182,7 +182,7 @@ const Header = () => {
                   <Text
                     weight={"medium"}
                     css={{
-                      lineHeight: "15px",
+                      lineHeight: "$xs",
                       borderBottom: "1px solid $border",
                       paddingBottom: "5px",
                       color: "$textPrimary",
