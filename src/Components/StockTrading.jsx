@@ -23,7 +23,7 @@ const StockTrading = ({ icon, title, borderBottom, bgColor }) => {
       >
         <img
           src={icon}
-          alt=""
+          alt="Stock"
           style={{
             width: "20px",
             height: "20px",
@@ -37,7 +37,7 @@ const StockTrading = ({ icon, title, borderBottom, bgColor }) => {
           height: "100%",
           borderBottom: borderBottom ? "1px solid $secondaryLight" : "",
           width: "100%",
-          padding: "13px 0",
+          paddingBlock: "13px",
         }}
         gap="6px"
         justifyContent="center"
@@ -51,8 +51,8 @@ const StockTrading = ({ icon, title, borderBottom, bgColor }) => {
           stock trading
         </Text>
         <Text
+          weight={"bold"}
           css={{
-            fontWeight: 600,
             fontSize: "14px",
             color: "$textPrimary",
           }}

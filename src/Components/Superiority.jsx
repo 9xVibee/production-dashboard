@@ -9,10 +9,10 @@ import { stockData } from "../utils/data";
 
 import StockTrading from "./StockTrading";
 import { useSelector } from "react-redux";
-import { LightMode } from "../redux/light-dark/lightDarkTypes";
+import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 
 const Superiority = () => {
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
 
   return (
     <Flex
@@ -24,21 +24,21 @@ const Superiority = () => {
     >
       <Flex alignItems="center" gap="10px">
         <Text
+          size="md"
+          weight={"bold"}
           css={{
-            fontWeight: 700,
-            fontSize: "$md",
             lineHeight: "28px",
             color: "$textPrimary",
           }}
         >
           Superiority
         </Text>
-        <img src={mode == LightMode ? AlertIcon : AlertIcon2} alt="" />
+        <img src={mode == LIGHT_MODE ? AlertIcon : AlertIcon2} alt="Alert" />
       </Flex>
 
       <img
         src={Frame}
-        alt=""
+        alt="Frame"
         style={{
           width: "250px",
           height: "156px",
@@ -55,7 +55,7 @@ const Superiority = () => {
         }}
         gap="10px"
       >
-        <img src={Link} alt="" />
+        <img src={Link} alt="Link Icon" />
         <Text
           css={{
             color: "$purple",

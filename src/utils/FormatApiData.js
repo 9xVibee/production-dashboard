@@ -1,5 +1,5 @@
 const FormatData = (data) => {
-  let soldArr = [true, false];
+  let IsSoldOrNotBooleanValueArray = [true, false];
 
   let newFormattedData = data?.map((items) => {
     let date = new Date();
@@ -12,9 +12,8 @@ const FormatData = (data) => {
     return {
       ...items,
       date: date.toISOString().substring(0, 10),
-      sold: soldArr[Math.floor(Math.random() * 2)],
+      sold: IsSoldOrNotBooleanValueArray[Math.floor(Math.random() * 2)],
       formattedDate: `${monthStr} ${yearNum}`,
-      price: items.price > 800 ? 450 : items.price,
     };
   });
 

@@ -11,9 +11,9 @@ const Events = () => {
       justifyContent={"center"}
     >
       <Text
+        weight={"bold"}
         css={{
           fontSize: "3xl",
-          fontWeight: "600",
         }}
       >
         Events

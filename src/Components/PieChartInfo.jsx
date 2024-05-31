@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Box, Flex, Text } from "@sparrowengg/twigs-react";
 
 const PieChartInfo = ({ title, color, value }) => {
@@ -9,9 +8,9 @@ const PieChartInfo = ({ title, color, value }) => {
           border: `2px solid ${color}`,
           marginTop: "9px",
           width: "30px",
-          borderRadius: "8px",
+          borderRadius: "$lg",
         }}
-      ></Box>
+      />
       <Flex
         flexDirection="column"
         gap="11px"
@@ -20,18 +19,18 @@ const PieChartInfo = ({ title, color, value }) => {
         }}
       >
         <Text
+          weight={"medium"}
+          size="md"
           css={{
-            fontWeight: "400",
-            fontSize: "$md",
             color: "$textSecondary",
           }}
         >
           {title}
         </Text>
         <Text
+          weight={"medium"}
+          size="md"
           css={{
-            fontWeight: "600",
-            fontSize: "$md",
             color: "$textPrimary",
           }}
         >

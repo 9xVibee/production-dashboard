@@ -11,9 +11,9 @@ const AdvanceQuarry = () => {
       justifyContent={"center"}
     >
       <Text
+        weight={"bold"}
         css={{
           fontSize: "3xl",
-          fontWeight: "600",
         }}
       >
         AdvanceQuarry

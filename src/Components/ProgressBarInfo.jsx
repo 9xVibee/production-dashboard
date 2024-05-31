@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-
 import { Box, Flex, Text } from "@sparrowengg/twigs-react";
 
 const ProgressBarInfo = ({ title, subTitle, bgColor }) => {
@@ -11,7 +8,7 @@ const ProgressBarInfo = ({ title, subTitle, bgColor }) => {
           border: `2px solid ${bgColor}`,
           marginTop: "9px",
           width: "30px",
-          borderRadius: "8px",
+          borderRadius: "$lg",
         }}
       ></Box>
       <Flex
@@ -22,15 +19,15 @@ const ProgressBarInfo = ({ title, subTitle, bgColor }) => {
         }}
       >
         <Text
+          weight={"medium"}
+          soze="md"
           css={{
             color: "$textSecondary",
-            fontSize: "$md",
-            fontWeight: 400,
           }}
         >
           {title}
         </Text>
-        <Text css={{ color: "$textPrimary", fontSize: "$md", fontWeight: 600 }}>
+        <Text weight={"bold"} size="md" css={{ color: "$textPrimary" }}>
           {subTitle}
         </Text>
       </Flex>

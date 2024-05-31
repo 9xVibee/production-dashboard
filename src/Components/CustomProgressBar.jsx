@@ -5,12 +5,12 @@ const CustomProgressBar = ({ soldPercentage }) => {
   return (
     <Box
       css={{
-        width: "486px",
-        borderRadius: "18px",
+        width: 486,
+        borderRadius: "$2xl",
         overflow: "hidden",
         height: "15px",
         backgroundColor: "$lightPurple",
-        marginTop: "20px",
+        marginTop: "$10",
       }}
     >
       <Box
@@ -18,7 +18,7 @@ const CustomProgressBar = ({ soldPercentage }) => {
           width: `${soldPercentage}%`,
           height: "100%",
           backgroundColor: "$mediumPurple",
-          borderRadius: "18px",
+          borderRadius: "$2xl",
         }}
       ></Box>
     </Box>

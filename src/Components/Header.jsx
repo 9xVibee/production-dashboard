@@ -11,7 +11,7 @@ import Moon from "./../asset/moon.svg";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { DarkMode, LightMode } from "../redux/light-dark/lightDarkTypes";
+import { DARK_MODE, LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 
 import {
   DropdownMenu,
@@ -27,14 +27,14 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
-  const [dataSearch, setDataSearch] = useState([]);
+  const [dataSearch, SET_DATASearch] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const location = useLocation();
 
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
   const data = useSelector((store) => store.fakeapidata.data);
 
   const dispatch = useDispatch();
@@ -42,14 +42,12 @@ const Header = () => {
   // function to handle the light and dark mode
   const handleModeChange = () => {
     dispatch({
-      type: mode === LightMode ? DarkMode : LightMode,
+      type: mode === LIGHT_MODE ? DARK_MODE : LIGHT_MODE,
     });
   };
 
   const getSearchData = (searchVal) => {
-    let newData = data.filter((item) => item.title.includes(searchVal));
-
-    setDataSearch(newData);
+    SET_DATASearch(data.filter((item) => item.title.includes(searchVal)));
   };
 
   return (
@@ -57,7 +55,7 @@ const Header = () => {
       css={{
         width: "100%",
         backgroundColor: "$primary",
-        padding: "16px 30px",
+        padding: "$8 $15",
       }}
       alignItems="center"
       justifyContent="space-between"
@@ -65,18 +63,12 @@ const Header = () => {
       {/* header left section */}
       <Flex
         alignItems="center"
-        gap="40px"
+        gap="$20"
         css={{
           width: "100%",
         }}
       >
-        <Flex
-          justifyContent="flex-start"
-          gap="40px"
-          css={{
-            width: "auto",
-          }}
-        >
+        <Flex justifyContent="flex-start" gap="$20">
           <Link
             to={"/"}
             style={{
@@ -84,9 +76,9 @@ const Header = () => {
             }}
           >
             <Text
+              weight={"bold"}
+              size="md"
               css={{
-                fontSize: "$md",
-                fontWeight: 600,
                 color:
                   location.pathname === "/" ? "$textPrimary" : "$textSecondary",
                 cursor: "pointer",
@@ -103,10 +95,10 @@ const Header = () => {
             }}
           >
             <Text
+              weight={"bold"}
+              size="md"
               css={{
-                fontSize: "$md",
                 cursor: "pointer",
-                fontWeight: 600,
                 color:
                   location.pathname == "/advancequarry"
                     ? "$textPrimary"
@@ -125,10 +117,10 @@ const Header = () => {
             }}
           >
             <Text
+              weight={"bold"}
+              size="md"
               css={{
                 cursor: "pointer",
-                fontSize: "$md",
-                fontWeight: 600,
                 color:
                   location.pathname == "/events"
                     ? "$textPrimary"
@@ -143,10 +135,10 @@ const Header = () => {
         <Box
           css={{
             width: "2px",
-            height: "40px",
+            height: "$10",
             transform: "rotate(180deg)",
             background:
-              mode === LightMode
+              mode === LIGHT_MODE
                 ? "linear-gradient(180deg, rgba(238, 236, 250, 0) 0%, #F9F9F9 51.44%, rgba(238, 236, 250, 0) 100%)"
                 : "linear-gradient(180deg, rgba(44, 44, 46, 0) 0%, rgba(84, 84, 88, 0.65) 51.44%, rgba(44, 44, 46, 0) 100%)",
           }}
@@ -175,11 +167,11 @@ const Header = () => {
               css={{
                 width: "100%",
                 backgroundColor: "$primary",
-                padding: "20px 10px",
+                padding: "$10 $5",
                 position: "absolute",
-                border: "1px solid $border",
+                border: "$borderWeights$xs solid $border",
                 top: 40,
-                borderRadius: "8px",
+                borderRadius: "$lg",
                 zIndex: "99",
               }}
               flexDirection="column"
@@ -188,8 +180,8 @@ const Header = () => {
               {searchText.length && dataSearch.length !== 0 ? (
                 dataSearch.map((item) => (
                   <Text
+                    weight={"medium"}
                     css={{
-                      fontWeight: 400,
                       lineHeight: "15px",
                       borderBottom: "1px solid $border",
                       paddingBottom: "5px",
@@ -217,10 +209,10 @@ const Header = () => {
       {/* Header right section */}
       <Flex alignItems="center" justifyContent="center" gap="20px">
         <Text
+          weight={"bold"}
+          size="md"
           css={{
             color: "$textPrimary",
-            fontWeight: "600",
-            fontSize: "$md",
             width: "120px",
           }}
         >
@@ -242,15 +234,15 @@ const Header = () => {
             >
               <img
                 src={Profile}
-                alt=""
+                alt="Profile Pic"
                 style={{
                   width: "50px",
                   height: "50px",
                 }}
               />
               <img
-                src={mode === LightMode ? DownArrow : DownArrowWhite}
-                alt=""
+                src={mode === LIGHT_MODE ? DownArrow : DownArrowWhite}
+                alt="Profile Pic"
                 style={{
                   width: "10px",
                   height: "10px",
@@ -277,8 +269,8 @@ const Header = () => {
 
         <Tooltip content="light/dark mode">
           <img
-            src={mode === LightMode ? Moon : Sun}
-            alt=""
+            src={mode === LIGHT_MODE ? Moon : Sun}
+            alt="Light/Dark Icon"
             style={{
               width: "14px",
               height: "14px",

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { COUNT_ABOVE, COUNT_BELOW } from "../utils/data";
 
 const FilterData = () => {
   const { count, endDate } = useSelector((store) => store.fakeapidata);
@@ -14,8 +15,10 @@ const FilterData = () => {
 
     if (count) {
       newFilteredData = data?.filter((item) => {
-        if (count === "below 100" && item?.rating?.count <= 100) return item;
-        else if (count === "above 100" && item?.rating?.count > 100)
+        if (
+          (count === COUNT_BELOW && item?.rating?.count <= 100) ||
+          (count === COUNT_ABOVE && item?.rating?.count > 100)
+        )
           return item;
       });
     }
@@ -30,7 +33,6 @@ const FilterData = () => {
     }
 
     newFilteredData?.sort((a, b) => new Date(a.date) - new Date(b.date));
-    console.log(newFilteredData);
     setFilteredData(newFilteredData);
   };
 

@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Box, Flex, Text } from "@sparrowengg/twigs-react";
 import { useSelector } from "react-redux";
-import { LightMode } from "../redux/light-dark/lightDarkTypes";
+import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
+import { PRICE } from "../utils/data";
 
 const CustomToolTip = ({ active, payload }) => {
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
+
   if (active && payload) {
     return (
       <Box>
@@ -14,30 +16,30 @@ const CustomToolTip = ({ active, payload }) => {
               key={idx}
               css={{
                 padding: "15px",
-                backgroundColor: mode === LightMode ? "#FFFFFF" : "#3A3A3C",
+                backgroundColor: mode === LIGHT_MODE ? "#FFFFFF" : "#3A3A3C",
                 boxShadow: "0px 8px 16px 0px #3232470F",
-                borderRadius: "10px",
-                marginTop: "20px",
+                borderRadius: "$",
+                marginTop: "$10",
               }}
               flexDirection="column"
               gap="5px"
             >
               <Text
+                size="xs"
                 css={{
-                  fontSize: "$xs",
                   color: "$textSecondary",
                 }}
               >
                 {item.name}
               </Text>
               <Text
+                size="md"
                 css={{
-                  fontSize: "$md",
                   color: "$textPrimary",
-                  fontWeight: "700",
                 }}
+                weight={"bold"}
               >
-                {item.name === "price"
+                {item.name === PRICE
                   ? item.payload.price
                   : item.payload.rating.count}
               </Text>

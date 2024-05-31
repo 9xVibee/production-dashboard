@@ -6,58 +6,20 @@ import {
   Tooltip,
 } from "@sparrowengg/twigs-react";
 
-import MenuIcon from "./../asset/menu.svg";
-import SideBarIcon1 from "./../asset/sidebarImg1.svg";
-import SideBarIcon2 from "./../asset/sidebarImg2.svg";
-import SideBarIcon3 from "./../asset/sidebarImg3.svg";
-import MessageIcon from "./../asset/message-square.svg";
-import MessageIconLight from "./../asset/message-squarelight.svg";
-
-import Icon1 from "./../asset/icon1.svg";
-import Icon2 from "./../asset/icon2.svg";
-import Icon3 from "./../asset/icon3.svg";
-import Icon4 from "./../asset/icon4.svg";
-import Icon5 from "./../asset/icon5.svg";
-
-// Light icons
-import lightIcon from "./../asset/commandLight.svg";
-import lightIcon2 from "./../asset/pie-chartlight.svg";
-import lightIcon3 from "./../asset/clockLight.svg";
-import lightIcon4 from "./../asset/globelight.svg";
-import lightIcon5 from "./../asset/loaderlight.svg";
+// side bar icons
+import { icons } from "./../utils/SidebArIcons";
+const { IconArr, imgArr, MenuIcon, MessageIcon, MessageIconLight } = icons;
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { LightMode } from "../redux/light-dark/lightDarkTypes";
-
-const imgArr = [SideBarIcon1, SideBarIcon2, SideBarIcon3];
-const IconArr = [
-  {
-    light: Icon1,
-    dark: lightIcon,
-  },
-  {
-    light: Icon2,
-    dark: lightIcon2,
-  },
-  {
-    light: Icon3,
-    dark: lightIcon3,
-  },
-  {
-    light: Icon4,
-    dark: lightIcon4,
-  },
-  {
-    light: Icon5,
-    dark: lightIcon5,
-  },
-];
+import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 
 const Sidebar = () => {
+  // states
   const [isOpen, setIsOpen] = useState(false);
 
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  // selector
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
 
   return (
     <>
@@ -67,7 +29,7 @@ const Sidebar = () => {
         alignItems="center"
         css={{
           height: "100%",
-          width: "80px",
+          width: "$20",
           backgroundColor: "$primary",
         }}
       >
@@ -77,7 +39,7 @@ const Sidebar = () => {
             justifyContent="center"
             alignItems="center"
             css={{
-              padding: "30px",
+              padding: "$15",
               cursor: "pointer",
             }}
             onClick={() => {
@@ -86,10 +48,10 @@ const Sidebar = () => {
           >
             <img
               src={MenuIcon}
-              alt=""
+              alt="Menu Icon"
               style={{
-                width: "20px",
-                height: "20px",
+                width: "$5",
+                height: "$5",
               }}
             />
           </Flex>
@@ -97,15 +59,15 @@ const Sidebar = () => {
           <Box
             css={{
               width: "2px",
-              height: "40px",
+              height: "$10",
               transform: "rotate(90deg)",
-              marginTop: "-16px",
+              marginTop: "-$8",
               background:
-                mode === LightMode
+                mode === LIGHT_MODE
                   ? "linear-gradient(180deg, rgba(238, 236, 250, 0) 0%, #F9F9F9 51.44%, rgba(238, 236, 250, 0) 100%)"
                   : "linear-gradient(180deg, rgba(44, 44, 46, 0) 0%, rgba(84, 84, 88, 0.65) 51.44%, rgba(44, 44, 46, 0) 100%)",
             }}
-          ></Box>
+          />
 
           {imgArr.map((url, idx) => {
             return (
@@ -117,7 +79,7 @@ const Sidebar = () => {
                   margin: "13px 0",
                   cursor: "pointer",
                 }}
-                key={idx}
+                key={url}
                 alt=""
               />
             );
@@ -126,10 +88,10 @@ const Sidebar = () => {
           <Box
             css={{
               width: "2px",
-              height: "40px",
+              height: "$10",
               transform: "rotate(90deg)",
               background:
-                mode === LightMode
+                mode === LIGHT_MODE
                   ? "linear-gradient(180deg, rgba(238, 236, 250, 0) 0%, #F9F9F9 51.44%, rgba(238, 236, 250, 0) 100%)"
                   : "linear-gradient(180deg, rgba(44, 44, 46, 0) 0%, rgba(84, 84, 88, 0.65) 51.44%, rgba(44, 44, 46, 0) 100%)",
             }}
@@ -150,25 +112,25 @@ const Sidebar = () => {
             {IconArr.map((icon, idx) => {
               return (
                 <Flex
-                  key={idx}
+                  key={icon}
                   css={{
                     backgroundColor:
                       idx === 0
-                        ? mode === LightMode
+                        ? mode === LIGHT_MODE
                           ? "$primary"
                           : "#787880"
                         : "",
                     borderRadius: "15px",
-                    width: "40px",
-                    height: "40px",
+                    width: "$10",
+                    height: "$10",
                     boxShadow: idx === 0 ? "0px 4px 4px 0px #00000014" : "",
                   }}
                   justifyContent="center"
                   alignItems="center"
                 >
                   <img
-                    src={mode === LightMode ? icon?.light : icon?.dark}
-                    alt=""
+                    src={mode === LIGHT_MODE ? icon?.light : icon?.dark}
+                    alt="Sidebar Icons"
                     style={{
                       width: "14px",
                       height: "14px",
@@ -189,10 +151,10 @@ const Sidebar = () => {
           <Box
             css={{
               width: "2px",
-              height: "40px",
+              height: "$10",
               transform: "rotate(90deg)",
               background:
-                mode === LightMode
+                mode === LIGHT_MODE
                   ? "linear-gradient(180deg, rgba(238, 236, 250, 0) 0%, #F9F9F9 51.44%, rgba(238, 236, 250, 0) 100%)"
                   : "linear-gradient(180deg, rgba(44, 44, 46, 0) 0%, rgba(84, 84, 88, 0.65) 51.44%, rgba(44, 44, 46, 0) 100%)",
             }}
@@ -201,8 +163,8 @@ const Sidebar = () => {
           <Tooltip content="Message">
             <Flex
               css={{
-                height: "44px",
-                width: "44px",
+                height: "$11",
+                width: "$11",
                 marginBlock: "13px",
                 borderRadius: "15px",
                 backgroundColor: "$secondary",
@@ -212,8 +174,8 @@ const Sidebar = () => {
               alignItems="center"
             >
               <img
-                src={mode === LightMode ? MessageIcon : MessageIconLight}
-                alt=""
+                src={mode === LIGHT_MODE ? MessageIcon : MessageIconLight}
+                alt="Message Icon"
               />
             </Flex>
           </Tooltip>

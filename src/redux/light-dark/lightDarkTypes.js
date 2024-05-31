@@ -1,2 +1,2 @@
-export const LightMode = "light";
-export const DarkMode = "dark";
+export const LIGHT_MODE = "light";
+export const DARK_MODE = "dark";

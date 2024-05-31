@@ -1,19 +1,19 @@
 /* eslint-disable no-unused-vars */
 
-import { DarkMode, LightMode } from "./lightDarkTypes";
+import { DARK_MODE, LIGHT_MODE } from "./lightDarkTypes";
 
 const initialState = {
-  lightDarkMode: "light",
+  lightDARK_MODE: "light",
 };
 
-const LightDarkModeReducer = (state = initialState, action) => {
+const LightDARK_MODEReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LightMode: {
-      return { lightDarkMode: "light" };
+    case LIGHT_MODE: {
+      return { lightDARK_MODE: "light" };
     }
 
-    case DarkMode: {
-      return { lightDarkMode: "dark" };
+    case DARK_MODE: {
+      return { lightDARK_MODE: "dark" };
     }
 
     default:
@@ -21,4 +21,4 @@ const LightDarkModeReducer = (state = initialState, action) => {
   }
 };
 
-export default LightDarkModeReducer;
+export default LightDARK_MODEReducer;

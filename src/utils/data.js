@@ -62,4 +62,25 @@ export const progressBarData = [
   },
 ];
 
+// constants
+
 export const COLORS = ["#7459D9", "#5D4C9C", "#B9ABEB", "#E3DEF7"];
+export const PRICE = "price";
+
+export const COUNT_BELOW = "below 100";
+export const COUNT_ABOVE = "above 100";
+
+export const COLORS_TOP_CATEGORY = [
+  {
+    light: "#7459D9",
+    dark: "#5E5CE6",
+  },
+  {
+    light: "#7459D980",
+    dark: "#44448A",
+  },
+  {
+    light: "#E3DEF7",
+    dark: "#363653",
+  },
+];

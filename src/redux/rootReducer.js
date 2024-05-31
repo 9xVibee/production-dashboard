@@ -1,10 +1,10 @@
 // reducers/index.js
 import { combineReducers } from "redux";
-import LightDarkModeReducer from "./light-dark/lightDarkReducer";
+import LightDARK_MODEReducer from "./light-dark/lightDarkReducer";
 import FakeApiReducer from "./fake-api-data/FakeApiDataReducer";
 
 const rootReducer = combineReducers({
-  lightdarkmode: LightDarkModeReducer,
+  lightDARK_MODE: LightDARK_MODEReducer,
   fakeapidata: FakeApiReducer,
 });
 

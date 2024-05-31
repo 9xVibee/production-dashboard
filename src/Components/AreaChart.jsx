@@ -10,12 +10,12 @@ import {
 
 import CustomToolTip from "./CustomToolTip";
 import { useSelector } from "react-redux";
-import { LightMode } from "../redux/light-dark/lightDarkTypes";
+import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 import FilterData from "../hooks/FilterData";
-import { Flex, Text } from "@sparrowengg/twigs-react";
+import { Flex, Heading, Text } from "@sparrowengg/twigs-react";
 
 const AreaChartComp = () => {
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
   const loading = useSelector((store) => store.fakeapidata.loading);
 
   const { filteredData } = FilterData();
@@ -25,24 +25,23 @@ const AreaChartComp = () => {
       {loading ? (
         <Flex
           css={{
-            marginTop: "25px",
-            height: "320px",
+            marginTop: 25,
+            height: 320,
             width: "100%",
-            border: "1px solid $border",
-            borderRadius: "8px",
+            border: "$borderWidths$xs solid $border",
+            borderRadius: "$lg",
           }}
           alignItems="center"
           justifyContent="center"
         >
-          <Text
+          <Heading
+            size={"h5"}
             css={{
-              fontSize: "$2xl",
-              fontWeight: "600",
               color: "$textPrimary",
             }}
           >
             Loading...
-          </Text>
+          </Heading>
         </Flex>
       ) : filteredData.length ? (
         <AreaChart
@@ -72,7 +71,7 @@ const AreaChartComp = () => {
 
           <CartesianGrid
             vertical={false}
-            stroke={mode === LightMode ? "#ECE9F1" : "#3D3C41"}
+            stroke={mode === LIGHT_MODE ? "#ECE9F1" : "#3D3C41"}
           />
 
           <Area
@@ -96,24 +95,23 @@ const AreaChartComp = () => {
       ) : (
         <Flex
           css={{
-            marginTop: "25px",
-            height: "320px",
+            marginTop: "25",
+            height: 320,
             width: "100%",
-            border: "1px solid $border",
-            borderRadius: "8px",
+            border: "$borderWeights$xs solid $border",
+            borderRadius: "$lg",
           }}
           alignItems="center"
           justifyContent="center"
         >
-          <Text
+          <Heading
+            size="h5"
             css={{
-              fontSize: "$2xl",
-              fontWeight: "600",
               color: "$textPrimary",
             }}
           >
             No data Availabel!
-          </Text>
+          </Heading>
         </Flex>
       )}
     </ResponsiveContainer>

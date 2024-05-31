@@ -14,10 +14,10 @@ const SoldUnsold = () => {
     let sold = 0,
       unsold = 0;
 
-    for (let i = 0; i < filteredData?.length; i++) {
-      if (filteredData[i].sold) sold++;
+    filteredData?.forEach((item) => {
+      if (item?.sold) sold++;
       else unsold++;
-    }
+    });
 
     setSoldUnsoldData(() => ({
       total: filteredData?.length,

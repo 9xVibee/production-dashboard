@@ -30,15 +30,16 @@ import HorizontalDotsDark from "./../asset/more-horizontalDark.svg";
 import { useState } from "react";
 import AreaChartComp from "../Components/AreaChart";
 import PieBarContainer from "../Components/PieBarContainer";
-import { LightMode } from "../redux/light-dark/lightDarkTypes";
+import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { parseDate } from "@internationalized/date";
 import {
   SET_DATE_RANGE,
-  SetCount,
+  SET_COUNT,
 } from "../redux/fake-api-data/fakeApiDataTypes";
 
 import { CalendarRange } from "@sparrowengg/twigs-react";
+import { COUNT_ABOVE, COUNT_BELOW } from "../utils/data";
 
 const Dashboard = () => {
   const [value, setValue] = useState({
@@ -47,7 +48,7 @@ const Dashboard = () => {
   });
 
   const dispatch = useDispatch();
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
 
   // Function to formate the date in this format -> month (string) date (number) ex: Feb 1
   function FormattedDateFn() {
@@ -62,14 +63,13 @@ const Dashboard = () => {
   //**  function to set the count in the redux
   const handleCountChange = (value) => {
     dispatch({
-      type: SetCount,
+      type: SET_COUNT,
       count: value,
     });
   };
 
   //**  function to set the calender range date in the redux
   const handleDateRangeChange = (startDate, endDate) => {
-    console.log("START AND END DATE", startDate, endDate);
     const startDateRedux = new Date(startDate);
     const endDateRedux = new Date(endDate);
 
@@ -93,10 +93,10 @@ const Dashboard = () => {
     >
       <Flex alignItems="center" gap="10px">
         <Text
+          weight={"bold"}
+          size="sm"
           css={{
-            color: "$purple",
-            fontSize: "$sm",
-            fontWeight: "700",
+            color: "$textPrimary",
           }}
         >
           Dashboard
@@ -104,16 +104,16 @@ const Dashboard = () => {
         <img
           src={LeftArrow}
           style={{
-            height: "8px",
-            width: "8px",
+            height: "$2",
+            width: "$2",
           }}
-          alt=""
+          alt="Left Arrow"
         />
         <Text
+          size="sm"
+          weight={"medium"}
           css={{
             color: "$textSecondary",
-            fontSize: "$sm",
-            fontWeight: "500",
           }}
         >
           BITFOREX.COM
@@ -123,14 +123,14 @@ const Dashboard = () => {
       {/* Wubin design/logo section (heading) */}
       <Flex
         css={{
-          marginTop: "20px",
+          marginTop: "$10",
         }}
         alignItems="center"
-        gap="20px"
+        gap="$10"
       >
         <img
           src={moonIconDashboard}
-          alt=""
+          alt="Moon Icon"
           style={{
             width: "45px",
             height: "45px",
@@ -138,10 +138,10 @@ const Dashboard = () => {
         />
 
         <Text
+          weight={"bold"}
           css={{
             fontSize: "$xl",
             lineHeight: "40px",
-            fontWeight: "700",
             color: "$textPrimary",
           }}
         >
@@ -152,14 +152,14 @@ const Dashboard = () => {
           alignItems="center"
           justifyContent="center"
           css={{
-            padding: "10px",
+            padding: "$5",
             backgroundColor: "$secondaryLight",
             borderRadius: "100%",
           }}
         >
           <img
-            src={mode === LightMode ? Plus : plusLight}
-            alt=""
+            src={mode === LIGHT_MODE ? Plus : plusLight}
+            alt="Plus Icon"
             style={{
               width: "25px",
               height: "25px",
@@ -179,17 +179,17 @@ const Dashboard = () => {
         {/* left total visit section  */}
         <Flex alignItems="center" gap="10px">
           <Text
+            weight={"bold"}
+            size="md"
             css={{
-              fontSize: "$md",
-              fontWeight: "700",
               color: "$textPrimary",
             }}
           >
             Total visit
           </Text>
           <img
-            src={mode == LightMode ? AlertCircle : AlertCircle2}
-            alt=""
+            src={mode == LIGHT_MODE ? AlertCircle : AlertCircle2}
+            alt="Alert Icon"
             style={{
               width: "18px",
               height: "18px",
@@ -203,15 +203,15 @@ const Dashboard = () => {
             css={{
               width: "61px",
               border: "2px solid $secondaryLight",
-              borderRadius: "8px",
+              borderRadius: "$lg",
             }}
           ></Box>
 
           <Text
+            size="xs"
+            weight={"medium"}
             css={{
               color: "$textSecondary",
-              fontSize: "$xs",
-              fontWeight: "700",
             }}
           >
             Provisions Month
@@ -224,12 +224,12 @@ const Dashboard = () => {
                   fontSize: "14px",
                   color: "$textPrimary",
                   fontWeight: "400",
-                  border: "1px solid $border",
-                  padding: "$5 $5 !important",
+                  border: "$borderWidths$xs solid $border",
+                  padding: "$5 !important",
                   lineHeight: "22px",
                   "& svg": {
-                    height: "16px !important",
-                    width: "16px !important",
+                    height: "$4 !important",
+                    width: "$4 !important",
                   },
                 }}
                 size={"md"}
@@ -262,14 +262,14 @@ const Dashboard = () => {
               <Flex
                 css={{
                   padding: "8px",
-                  border: "1px solid $border",
+                  border: "$borderWidths$xs solid $border",
                   borderRadius: "5px",
                   cursor: "pointer",
                 }}
               >
                 <img
-                  src={mode == LightMode ? HorizontalDots : HorizontalDotsDark}
-                  alt=""
+                  src={mode == LIGHT_MODE ? HorizontalDots : HorizontalDotsDark}
+                  alt="Dots"
                   style={{
                     width: "14px",
                     height: "14px",
@@ -290,12 +290,12 @@ const Dashboard = () => {
               </DropdownMenuItem>
 
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => handleCountChange("below 100")}>
+              <DropdownMenuItem onClick={() => handleCountChange(COUNT_BELOW)}>
                 Below or equal to 100
               </DropdownMenuItem>
 
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => handleCountChange("above 100")}>
+              <DropdownMenuItem onClick={() => handleCountChange(COUNT_ABOVE)}>
                 Above 100
               </DropdownMenuItem>
             </DropdownMenuContent>

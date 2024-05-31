@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
 import { useSelector } from "react-redux";
-import { LightMode } from "../redux/light-dark/lightDarkTypes";
+import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 import { COLORS } from "../utils/data";
 import { Flex, Text } from "@sparrowengg/twigs-react";
 
 const PieChartComp = ({ arr }) => {
-  const mode = useSelector((store) => store.lightdarkmode.lightDarkMode);
+  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
 
   let firstArr = arr?.map((arr2) => ({
     title: arr2[0],
@@ -23,7 +23,7 @@ const PieChartComp = ({ arr }) => {
           cx="50%"
           cy="50%"
           innerRadius={70}
-          fill={`${mode === LightMode ? "#7459D9" : "#5E5CE6"}`}
+          fill={`${mode === LIGHT_MODE ? "#7459D9" : "#5E5CE6"}`}
         >
           {firstArr?.map((arr, idx) => (
             <Cell key={arr.title} fill={COLORS[idx]} />
@@ -44,8 +44,8 @@ const PieChartComp = ({ arr }) => {
       >
         <Text
           size="xl"
+          weight={"bold"}
           css={{
-            fontWeight: "600",
             color: "$textPrimary",
           }}
         >
