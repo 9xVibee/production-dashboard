@@ -4,7 +4,7 @@ const AdvanceQuarry = () => {
   return (
     <Flex
       css={{
-        width: 1080,
+        width: "100%",
         backgroundColor: "$primary",
       }}
       alignItems="center"
