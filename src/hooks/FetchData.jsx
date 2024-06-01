@@ -17,14 +17,10 @@ const FetchData = () => {
 
       const formattedData = FormatData(data);
 
-      dispatch({
-        type: SET_LOADING,
-        loading: false,
-      });
-
       return formattedData;
     } catch (error) {
       console.log("Error in fetchData!", error);
+    } finally {
       dispatch({
         type: SET_LOADING,
         loading: false,

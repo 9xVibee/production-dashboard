@@ -17,19 +17,19 @@ const TopCateogry = () => {
       } else count[item?.category] = 1;
     });
 
-    let HashMapToArray = Object.entries(count);
+    let hashMapToArray = Object.entries(count);
 
-    HashMapToArray.sort((a, b) => b[1] - a[1]);
+    hashMapToArray.sort((a, b) => b[1] - a[1]);
 
     let pieInfoData = [];
 
-    HashMapToArray.forEach((item, i) => {
+    hashMapToArray.forEach((item, idx) => {
       let TempArr = item;
-      if (i < 2) {
-        pieInfoData[i] = {
+      if (idx < 2) {
+        pieInfoData[idx] = {
           title: TempArr?.[0],
           value: `${TempArr?.[1]} quantity`,
-          color: COLORS_TOP_CATEGORY[i],
+          color: COLORS_TOP_CATEGORY[idx],
         };
       } else others += TempArr?.[1];
     });
@@ -41,7 +41,7 @@ const TopCateogry = () => {
     };
 
     setPieData((prev) => {
-      return { ...prev, arr: HashMapToArray };
+      return { ...prev, arr: hashMapToArray };
     });
   };
 

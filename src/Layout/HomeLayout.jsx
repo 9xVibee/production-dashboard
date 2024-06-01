@@ -30,7 +30,7 @@ const HomeLayout = () => {
         height: "100vh",
         backgroundColor: "$secondary",
       }}
-      gap="2px"
+      gap="$1"
     >
       <Sidebar />
       <Flex
@@ -38,11 +38,11 @@ const HomeLayout = () => {
         css={{
           width: "100%",
         }}
-        gap="2px"
+        gap="$1"
       >
         <Header />
         <Flex
-          gap="2px"
+          gap="$1"
           css={{
             height: "100%",
           }}

@@ -5,10 +5,11 @@ import { COUNT_ABOVE, COUNT_BELOW } from "../utils/data";
 
 const FilterData = () => {
   const { isCountAboveOrBelow, endDate } = useSelector(
-    (store) => store.fakeapidata
+    (store) => store.fakeApiData
   );
-  const data = useSelector((store) => store.fakeapidata.data);
-  const startDate = useSelector((store) => store.fakeapidata.startDate);
+
+  const data = useSelector((store) => store.fakeApiData.data);
+  const startDate = useSelector((store) => store.fakeApiData.startDate);
 
   const [filteredData, setFilteredData] = useState(data);
 

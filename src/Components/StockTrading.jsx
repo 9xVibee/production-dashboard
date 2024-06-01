@@ -1,32 +1,37 @@
 /* eslint-disable react/prop-types */
-import { Flex, Text } from "@sparrowengg/twigs-react";
+import { Flex, styled, Text } from "@sparrowengg/twigs-react";
 
 const StockTrading = ({ icon, title, borderBottom, bgColor }) => {
+  const Image = styled("img", {
+    height: "$2",
+    width: "$2",
+  });
+
   return (
     <Flex
       css={{
-        width: "250px",
-        paddingLeft: "10px",
+        width: 250,
+        paddingLeft: "$5",
       }}
-      gap="32px"
+      gap="$16"
       alignItems="center"
     >
       <Flex
         css={{
-          width: "78px",
-          height: "48px",
-          borderRadius: "15px",
+          width: 78,
+          height: "$12",
+          borderRadius: "$2xl",
           backgroundColor: bgColor,
         }}
         justifyContent="center"
         alignItems="center"
       >
-        <img
+        <Image
           src={icon}
           alt="Stock"
-          style={{
-            width: "20px",
-            height: "20px",
+          css={{
+            width: "$5",
+            height: "$5",
           }}
         />
       </Flex>
@@ -37,14 +42,14 @@ const StockTrading = ({ icon, title, borderBottom, bgColor }) => {
           height: "100%",
           borderBottom: borderBottom ? "1px solid $secondaryLight" : "",
           width: "100%",
-          paddingBlock: "13px",
+          paddingBlock: 13,
         }}
-        gap="6px"
+        gap="$3"
         justifyContent="center"
       >
         <Text
+          size={"sm"}
           css={{
-            fontSize: "14px",
             color: "$textSecondary",
           }}
         >
@@ -52,8 +57,8 @@ const StockTrading = ({ icon, title, borderBottom, bgColor }) => {
         </Text>
         <Text
           weight={"bold"}
+          size={"sm"}
           css={{
-            fontSize: "14px",
             color: "$textPrimary",
           }}
         >

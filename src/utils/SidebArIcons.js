@@ -18,8 +18,8 @@ import lightIcon3 from "./../asset/clockLight.svg";
 import lightIcon4 from "./../asset/globelight.svg";
 import lightIcon5 from "./../asset/loaderlight.svg";
 
-const imgArr = [SideBarIcon1, SideBarIcon2, SideBarIcon3];
-const IconArr = [
+const sideBarImages = [SideBarIcon1, SideBarIcon2, SideBarIcon3];
+const sideBarIcons = [
   {
     light: Icon1,
     dark: lightIcon,
@@ -43,8 +43,8 @@ const IconArr = [
 ];
 
 export const icons = {
-  imgArr,
-  IconArr,
+  sideBarImages,
+  sideBarIcons,
   MessageIcon,
   MessageIconLight,
   MenuIcon,

@@ -10,7 +10,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Components/Home";
 
 const App = () => {
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
   const strRef = useRef("");
 
   useEffect(() => {

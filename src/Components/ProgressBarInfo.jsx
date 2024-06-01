@@ -2,20 +2,20 @@ import { Box, Flex, Text } from "@sparrowengg/twigs-react";
 
 const ProgressBarInfo = ({ title, subTitle, bgColor }) => {
   return (
-    <Flex gap="15px" alignItems="flex-start">
+    <Flex gap={15} alignItems="flex-start">
       <Box
         css={{
-          border: `2px solid ${bgColor}`,
+          border: `$borderWidths$sm solid ${bgColor}`,
           marginTop: "9px",
-          width: "30px",
+          width: 30,
           borderRadius: "$lg",
         }}
       ></Box>
       <Flex
         flexDirection="column"
-        gap="10px"
+        gap="$5"
         css={{
-          marginTop: "4px",
+          marginTop: "$2",
         }}
       >
         <Text

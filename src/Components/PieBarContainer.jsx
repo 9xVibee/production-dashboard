@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@sparrowengg/twigs-react";
+import { Flex, Heading, styled, Text } from "@sparrowengg/twigs-react";
 
 import AlertIconLight from "./../asset/alert-circle.svg";
 import AlertIconDark from "./../asset/alert-circle2.svg";
@@ -9,55 +9,64 @@ import CustomProgressBar from "./CustomProgressBar";
 import ProgressBarInfo from "./ProgressBarInfo";
 import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 import { useSelector } from "react-redux";
-import SoldUnsold from "../hooks/SoldUnsold";
+import SoldUnsoldItemsHook from "../hooks/SoldUnsoldItemsHook";
 import TopCateogry from "../hooks/TopCateogry";
 import { COLORS } from "../utils/data";
 
 const PieBarContainer = () => {
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
 
   const { pieData } = TopCateogry();
-  const { NumberOfSoldAndUnsoldItems } = SoldUnsold();
 
+  const { NumberOfSoldAndUnsoldItems } = SoldUnsoldItemsHook();
+
+  const Image = styled("img", {
+    height: "$2",
+    width: "$2",
+  });
   return (
     <Flex
       css={{
-        marginTop: "25px",
+        marginTop: 25,
         width: "100%",
         height: "100%",
       }}
-      gap="60px"
+      gap="$30"
       alignItems="flex-start"
     >
       {/* Pia container */}
       <Flex flexDirection="column" justifyContent="flex-start">
-        <Flex alignItems="center" gap="10px">
+        <Flex alignItems="center" gap="$5">
           <Text
             size="md"
             weight={"bold"}
             css={{
-              lineHeight: "28px",
+              lineHeight: "$lg",
               color: "$textPrimary",
             }}
           >
             Perpetual
           </Text>
-          <img
+          <Image
             src={mode === LIGHT_MODE ? AlertIconLight : AlertIcon2}
             alt="Alert Icon"
+            css={{
+              width: "18px !important",
+              height: "18px !important",
+            }}
           />
         </Flex>
 
         <Flex
           css={{
-            marginLeft: "-30px",
+            marginLeft: -30,
           }}
-          gap="40px"
+          gap="$20"
           justifyContent="flex-start"
           alignItems="center"
         >
           <CategoryCountContainerPieVR arr={pieData?.arr} />
-          <Flex flexDirection="column" gap="28px">
+          <Flex flexDirection="column" gap="$14">
             {pieData?.arr.map((info, idx) => {
               return (
                 <PieChartInfo
@@ -73,31 +82,35 @@ const PieBarContainer = () => {
       </Flex>
 
       {/* bar container */}
-      <Flex flexDirection="column" justifyContent="center" gap="50px">
-        <Flex alignItems="center" gap="10px">
+      <Flex flexDirection="column" justifyContent="center" gap="$25">
+        <Flex alignItems="center" gap="$5">
           <Text
             size="md"
             weight={"bold"}
             css={{
-              lineHeight: "28px",
+              lineHeight: "$lg",
               color: "$textPrimary",
             }}
           >
             Active Percentage
           </Text>
-          <img
+          <Image
             src={mode === LIGHT_MODE ? AlertIconLight : AlertIconDark}
             alt="Alert"
+            css={{
+              width: "18px !important",
+              height: "18px !important",
+            }}
           />
         </Flex>
 
         <Flex flexDirection="column">
-          <Flex alignItems="center" gap="10px">
+          <Flex alignItems="center" gap="$5">
             <Heading
               size="h3"
               css={{
                 color: "$textPrimary",
-                lineHeight: "46px",
+                lineHeight: "$3xl",
               }}
             >
               {NumberOfSoldAndUnsoldItems?.total}
@@ -124,7 +137,7 @@ const PieBarContainer = () => {
           <Flex
             justifyContent="flex-start"
             alignItems="center"
-            gap="50px"
+            gap="$25"
             css={{
               marginTop: "$10",
             }}
@@ -137,7 +150,7 @@ const PieBarContainer = () => {
 
             <ProgressBarInfo
               title={"Unsold"}
-              subTitle={NumberOfSoldAndUnsoldItems.unsold}
+              subTitle={NumberOfSoldAndUnsoldItems.unSold}
               bgColor={"$lightPurple"}
             />
           </Flex>

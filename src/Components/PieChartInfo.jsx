@@ -2,22 +2,16 @@ import { Box, Flex, Text } from "@sparrowengg/twigs-react";
 
 const PieChartInfo = ({ title, color, value }) => {
   return (
-    <Flex alignItems="flex-start" gap="15px">
+    <Flex alignItems="flex-start" gap={15}>
       <Box
         css={{
-          border: `2px solid ${color}`,
-          marginTop: "9px",
-          width: "30px",
+          border: `$borderWidths$sm solid ${color}`,
+          marginTop: 9,
+          width: 30,
           borderRadius: "$lg",
         }}
       />
-      <Flex
-        flexDirection="column"
-        gap="11px"
-        css={{
-          marginTop: "4px",
-        }}
-      >
+      <Flex flexDirection="column" gap={11}>
         <Text
           weight={"medium"}
           size="md"

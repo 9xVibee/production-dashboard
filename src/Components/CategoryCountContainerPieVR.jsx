@@ -6,7 +6,7 @@ import { COLORS } from "../utils/data";
 import { Flex, Text } from "@sparrowengg/twigs-react";
 
 const CategoryCountContainerPieVR = ({ arr }) => {
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
 
   let firstArr = arr?.map((arr2) => ({
     title: arr2[0],
@@ -36,7 +36,7 @@ const CategoryCountContainerPieVR = ({ arr }) => {
     return (
       <Flex
         css={{
-          width: "398px",
+          width: 398,
           maxHeight: "100%",
         }}
         alignItems="center"

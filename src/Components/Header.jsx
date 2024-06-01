@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Tooltip } from "@sparrowengg/twigs-react";
+import { Box, Flex, styled, Text, Tooltip } from "@sparrowengg/twigs-react";
 import { Input } from "@sparrowengg/twigs-react";
 
 import { SearchIcon } from "./Icons";
@@ -34,8 +34,8 @@ const Header = () => {
 
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
-  const data = useSelector((store) => store.fakeapidata.data);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
+  const data = useSelector((store) => store.fakeApiData.data);
 
   const dispatch = useDispatch();
 
@@ -49,6 +49,12 @@ const Header = () => {
   const getSearchData = (searchVal) => {
     SET_DATASearch(data.filter((item) => item.title.includes(searchVal)));
   };
+
+  // styled image
+  const Image = styled("img", {
+    height: "$2",
+    width: "$2",
+  });
 
   return (
     <Flex
@@ -103,7 +109,7 @@ const Header = () => {
                   location.pathname == "/advancequarry"
                     ? "$textPrimary"
                     : "$textSecondary",
-                width: "150px",
+                width: 150,
               }}
             >
               Advanced Quarry
@@ -134,7 +140,7 @@ const Header = () => {
 
         <Box
           css={{
-            width: "2px",
+            width: 2,
             height: "$10",
             transform: "rotate(180deg)",
             background:
@@ -175,7 +181,7 @@ const Header = () => {
                 zIndex: "99",
               }}
               flexDirection="column"
-              gap="10px"
+              gap="$5"
             >
               {searchText.length && dataSearch.length !== 0 ? (
                 dataSearch.map((item) => (
@@ -183,8 +189,8 @@ const Header = () => {
                     weight={"medium"}
                     css={{
                       lineHeight: "$xs",
-                      borderBottom: "1px solid $border",
-                      paddingBottom: "5px",
+                      borderBottom: "$borderWidths$xs solid $border",
+                      paddingBottom: 5,
                       color: "$textPrimary",
                     }}
                     key={item}
@@ -207,13 +213,13 @@ const Header = () => {
       </Flex>
 
       {/* Header right section */}
-      <Flex alignItems="center" justifyContent="center" gap="20px">
+      <Flex alignItems="center" justifyContent="center" gap={20}>
         <Text
           weight={"bold"}
           size="md"
           css={{
             color: "$textPrimary",
-            width: "120px",
+            width: 120,
           }}
         >
           Bessie Cooper
@@ -230,22 +236,22 @@ const Header = () => {
                 cursor: "pointer",
               }}
               alignItems="center"
-              gap="15px"
+              gap={15}
             >
-              <img
+              <Image
                 src={Profile}
                 alt="Profile Pic"
-                style={{
-                  width: "50px",
-                  height: "50px",
+                css={{
+                  width: 50,
+                  height: 50,
                 }}
               />
-              <img
+              <Image
                 src={mode === LIGHT_MODE ? DownArrow : DownArrowWhite}
                 alt="Profile Pic"
-                style={{
-                  width: "10px",
-                  height: "10px",
+                css={{
+                  width: 10,
+                  height: 10,
                   transform: isDropDownOpen ? "rotate(180deg)" : "",
                 }}
               />
@@ -268,13 +274,13 @@ const Header = () => {
         </DropdownMenu>
 
         <Tooltip content="light/dark mode">
-          <img
+          <Image
             src={mode === LIGHT_MODE ? Moon : Sun}
             alt="Light/Dark Icon"
-            style={{
-              width: "14px",
-              height: "14px",
-              margin: "10px",
+            css={{
+              width: 14,
+              height: 14,
+              margin: 10,
               cursor: "pointer",
             }}
             onClick={handleModeChange}

@@ -8,7 +8,7 @@ const CustomProgressBar = ({ soldPercentage }) => {
         width: 486,
         borderRadius: "$2xl",
         overflow: "hidden",
-        height: "15px",
+        height: 15,
         backgroundColor: "$lightPurple",
         marginTop: "$10",
       }}

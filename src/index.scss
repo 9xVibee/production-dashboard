@@ -7,17 +7,11 @@
 .tooltip {
   clip-path: polygon(
     0% 0%,
-    // Top left point
     100% 0%,
-    // Top right point
     100% calc(100% - 10px),
-    // Bottom right point
     calc(50% + 10px) calc(100% - 10px),
-    // Center right of the triangle
     50% 100%,
-    // Tip of the triangle
     calc(50% - 10px) calc(100% - 10px),
-    // Center left of the triangle
     0% calc(100% - 10px) // Bottom left point
   );
 }

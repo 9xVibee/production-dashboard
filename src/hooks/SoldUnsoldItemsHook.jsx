@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 import FilterData from "./FilterData";
 
-const SoldUnsold = () => {
+const SoldUnsoldItemsHook = () => {
   const { filteredData } = FilterData();
 
   const [NumberOfSoldAndUnsoldItems, SetNumberOfSoldAndUnsoldItems] = useState({
     sold: 0,
-    unsold: 0,
+    unSold: 0,
     total: filteredData?.length,
   });
 
   const countSoldUnsoldQuantity = () => {
     let sold = 0,
-      unsold = 0;
+      unSold = 0;
 
     filteredData?.forEach((item) => {
-      if (item?.sold) sold++;
-      else unsold++;
+      item?.sold ? sold++ : unSold++;
     });
 
     SetNumberOfSoldAndUnsoldItems(() => ({
       total: filteredData?.length,
       sold: sold,
-      unsold: unsold,
+      unSold: unSold,
     }));
   };
 
@@ -33,4 +32,4 @@ const SoldUnsold = () => {
   return { NumberOfSoldAndUnsoldItems };
 };
 
-export default SoldUnsold;
+export default SoldUnsoldItemsHook;

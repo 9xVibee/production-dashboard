@@ -14,7 +14,7 @@ const initialState = {
   endDate: null,
 };
 
-const FakeApiReducer = (state = initialState, action) => {
+const fakeApiDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DATA: {
       return {
@@ -52,4 +52,4 @@ const FakeApiReducer = (state = initialState, action) => {
   }
 };
 
-export default FakeApiReducer;
+export default fakeApiDataReducer;

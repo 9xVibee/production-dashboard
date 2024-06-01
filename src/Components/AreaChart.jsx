@@ -17,8 +17,8 @@ import FilterData from "../hooks/FilterData";
 import { Flex, Heading, Text } from "@sparrowengg/twigs-react";
 
 const AreaChartComp = () => {
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
-  const loading = useSelector((store) => store.fakeapidata.loading);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
+  const loading = useSelector((store) => store.fakeApiData.loading);
 
   const { filteredData } = FilterData();
 
@@ -97,7 +97,7 @@ const AreaChartComp = () => {
       ) : (
         <Flex
           css={{
-            marginTop: "25",
+            marginTop: 25,
             height: 320,
             width: "100%",
             border: "$borderWeights$xs solid $border",

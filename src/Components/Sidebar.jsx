@@ -4,11 +4,13 @@ import {
   Box,
   DrawerBody,
   Tooltip,
+  styled,
 } from "@sparrowengg/twigs-react";
 
 // side bar icons
 import { icons } from "./../utils/SidebArIcons";
-const { IconArr, imgArr, MenuIcon, MessageIcon, MessageIconLight } = icons;
+const { sideBarIcons, sideBarImages, MenuIcon, MessageIcon, MessageIconLight } =
+  icons;
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -19,7 +21,13 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   // selector
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
+
+  // image styled
+  const Image = styled("img", {
+    height: "$2",
+    width: "$2",
+  });
 
   return (
     <>
@@ -46,10 +54,10 @@ const Sidebar = () => {
               setIsOpen(true);
             }}
           >
-            <img
+            <Image
               src={MenuIcon}
               alt="Menu Icon"
-              style={{
+              css={{
                 width: "$5",
                 height: "$5",
               }}
@@ -58,7 +66,7 @@ const Sidebar = () => {
 
           <Box
             css={{
-              width: "2px",
+              width: 2,
               height: "$10",
               transform: "rotate(90deg)",
               marginTop: "-$8",
@@ -69,25 +77,25 @@ const Sidebar = () => {
             }}
           />
 
-          {imgArr.map((url, idx) => {
+          {sideBarImages.map((url, idx) => {
             return (
-              <img
+              <Image
                 src={url}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  margin: "13px 0",
+                css={{
+                  width: "$10",
+                  height: "$10",
+                  marginBlock: "13px",
                   cursor: "pointer",
                 }}
                 key={url}
-                alt=""
+                alt="Side bar Image"
               />
             );
           })}
 
           <Box
             css={{
-              width: "2px",
+              width: 2,
               height: "$10",
               transform: "rotate(90deg)",
               background:
@@ -95,21 +103,21 @@ const Sidebar = () => {
                   ? "linear-gradient(180deg, rgba(238, 236, 250, 0) 0%, #F9F9F9 51.44%, rgba(238, 236, 250, 0) 100%)"
                   : "linear-gradient(180deg, rgba(44, 44, 46, 0) 0%, rgba(84, 84, 88, 0.65) 51.44%, rgba(44, 44, 46, 0) 100%)",
             }}
-          ></Box>
+          />
 
           {/* Icons */}
           <Flex
             flexDirection="column"
             alignItems="center"
             css={{
-              padding: "2px",
+              padding: "$1",
               backgroundColor: "$secondaryLight",
-              borderRadius: "15px",
-              marginTop: "13px",
+              borderRadius: "$2xl",
+              marginTop: 13,
             }}
-            gap="8px"
+            gap="$4"
           >
-            {IconArr.map((icon, idx) => {
+            {sideBarIcons.map((icon, idx) => {
               return (
                 <Flex
                   key={icon}
@@ -120,7 +128,7 @@ const Sidebar = () => {
                           ? "$primary"
                           : "#787880"
                         : "",
-                    borderRadius: "15px",
+                    borderRadius: "$2xl",
                     width: "$10",
                     height: "$10",
                     boxShadow: idx === 0 ? "0px 4px 4px 0px #00000014" : "",
@@ -132,8 +140,8 @@ const Sidebar = () => {
                     src={mode === LIGHT_MODE ? icon?.light : icon?.dark}
                     alt="Sidebar Icons"
                     style={{
-                      width: "14px",
-                      height: "14px",
+                      width: 14,
+                      height: 14,
                     }}
                   />
                 </Flex>
@@ -150,7 +158,7 @@ const Sidebar = () => {
         >
           <Box
             css={{
-              width: "2px",
+              width: 2,
               height: "$10",
               transform: "rotate(90deg)",
               background:
@@ -165,8 +173,8 @@ const Sidebar = () => {
               css={{
                 height: "$11",
                 width: "$11",
-                marginBlock: "13px",
-                borderRadius: "15px",
+                marginBlock: 13,
+                borderRadius: "$2xl",
                 backgroundColor: "$secondary",
                 cursor: "pointer",
               }}

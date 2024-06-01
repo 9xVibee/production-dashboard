@@ -1,4 +1,4 @@
-import { Flex, Text } from "@sparrowengg/twigs-react";
+import { Flex, styled, Text } from "@sparrowengg/twigs-react";
 
 import AlertIcon from "./../asset/alert-circle.svg";
 import AlertIcon2 from "./../asset/alert-circle2.svg";
@@ -12,22 +12,27 @@ import { useSelector } from "react-redux";
 import { LIGHT_MODE } from "../redux/light-dark/lightDarkTypes";
 
 const Superiority = () => {
-  const mode = useSelector((store) => store.lightDARK_MODE.lightDARK_MODE);
+  const mode = useSelector((store) => store.lightDarkMode.lightDarkModeValue);
+
+  const Image = styled("img", {
+    height: "$2",
+    width: "$2",
+  });
 
   return (
     <Flex
       flexDirection="column"
       alignItems="flex-start"
       css={{
-        padding: "34px",
+        padding: "$17",
       }}
     >
-      <Flex alignItems="center" gap="10px">
+      <Flex alignItems="center" gap="$5">
         <Text
           size="md"
           weight={"bold"}
           css={{
-            lineHeight: "28px",
+            lineHeight: "$lg",
             color: "$textPrimary",
           }}
         >
@@ -36,26 +41,33 @@ const Superiority = () => {
         <img src={mode == LIGHT_MODE ? AlertIcon : AlertIcon2} alt="Alert" />
       </Flex>
 
-      <img
+      <Image
         src={Frame}
         alt="Frame"
-        style={{
-          width: "250px",
-          height: "156px",
-          marginTop: "22px",
+        css={{
+          width: 250,
+          height: "$39",
+          marginTop: "$11",
           boxShadow: "0px 8px 16px 0px #3232470F",
-          borderRadius: "15px",
+          borderRadius: "$2xl",
         }}
       />
 
       <Flex
         alignItems="center"
         css={{
-          marginTop: "15px",
+          marginTop: 15,
         }}
-        gap="10px"
+        gap="$5"
       >
-        <img src={Link} alt="Link Icon" />
+        <Image
+          src={Link}
+          alt="Link Icon"
+          css={{
+            width: 14,
+            height: 14,
+          }}
+        />
         <Text
           css={{
             color: "$purple",
@@ -68,15 +80,15 @@ const Superiority = () => {
       <Flex
         flexDirection="column"
         css={{
-          marginTop: "32px",
-          borderRadius: "18px",
+          marginTop: "$16",
+          borderRadius: "$2xl",
           backgroundColor: "$primary",
         }}
       >
-        {stockData.map((stock, idx) => {
+        {stockData.map((stock) => {
           return (
             <StockTrading
-              key={idx}
+              key={stock.icon}
               bgColor={stock.bgColor}
               borderBottom={stock.borderBottom}
               icon={stock.icon}
